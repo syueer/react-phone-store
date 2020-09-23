@@ -1,8 +1,10 @@
 import React, { useContext } from 'react'
 import { ProductContext } from '../../context'
 import { Link } from 'react-router-dom'
+import PayPalButton from './PayPalButton'
 
-const CartTotals = () => {
+
+const CartTotals = ({ history }) => {
     const value = useContext(ProductContext);
     const { cartSubtotal, cartTax, cartTotal, clearCart } = value;
     return (
@@ -27,6 +29,9 @@ const CartTotals = () => {
                             <span className="text-title">total :</span>
                             <strong>${cartTotal}</strong>
                         </h5>
+                        <PayPalButton total={cartTotal} clearCart={clearCart} history={history} />
+
+
                     </div>
 
                 </div>
